@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#111111">
+    <title>One UI Sim</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/lockscreen.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+    <main id="device">
+        <div id="status-bar">
+            <span id="status-time">--:--</span>
+            <div class="status-icons"><span>●</span><span>Wi-Fi</span><span>▰</span></div>
+        </div>
+
+        <section id="lock-screen" class="screen active">
+            <div class="lock-content">
+                <div id="lock-date"></div>
+                <div id="lock-clock">--:--</div>
+                <div class="lock-message">위로 밀어 잠금 해제</div>
+            </div>
+            <div class="lock-shortcuts">
+                <button class="shortcut" aria-label="전화">☎</button>
+                <button class="shortcut" aria-label="카메라">📷</button>
+            </div>
+            <button id="unlock-button">위로 밀어 잠금 해제 ↑</button>
+        </section>
+
+        <section id="home-screen" class="screen">
+            <div class="home-header">
+                <div class="home-greeting">
+                    <span>One UI Sim</span>
+                    <h1>안녕하세요.</h1>
+                </div>
+            </div>
+
+            <div class="widget">
+                <div id="home-clock">--:--</div>
+                <div id="home-date"></div>
+            </div>
+
+            <div class="app-grid">
+                <button class="app-icon"><div class="icon settings-icon">⚙</div><span>설정</span></button>
+                <button class="app-icon"><div class="icon gallery-icon">▧</div><span>갤러리</span></button>
+                <button class="app-icon"><div class="icon calculator-icon">▦</div><span>계산기</span></button>
+                <button class="app-icon"><div class="icon clock-icon">◷</div><span>시계</span></button>
+                <button class="app-icon"><div class="icon internet-icon">◎</div><span>인터넷</span></button>
+                <button class="app-icon"><div class="icon games-icon">🎮</div><span>술래잡기</span></button>
+            </div>
+
+            <div class="dock">
+                <div class="dock-icon">☎</div>
+                <div class="dock-icon">◎</div>
+                <div class="dock-icon">▣</div>
+                <div class="dock-icon">⚙</div>
+            </div>
+
+            <button id="app-drawer-button" aria-label="앱 서랍 열기">⌃</button>
+
+            <div id="app-drawer">
+                <div class="drawer-header">
+                    <h2>앱</h2>
+                    <button id="close-drawer" aria-label="앱 서랍 닫기">✕</button>
+                </div>
+                <input type="search" id="app-search" placeholder="앱 검색">
+                <div class="drawer-grid">
+                    <div class="drawer-app">⚙<span>설정</span></div>
+                    <div class="drawer-app">▧<span>갤러리</span></div>
+                    <div class="drawer-app">▦<span>계산기</span></div>
+                    <div class="drawer-app">◷<span>시계</span></div>
+                    <div class="drawer-app">◎<span>인터넷</span></div>
+                    <div class="drawer-app">🎮<span>술래잡기</span></div>
+                </div>
+            </div>
+        </section>
+
+        <div id="navigation-bar"><div></div></div>
+    </main>
+
+    <script src="js/clock.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
