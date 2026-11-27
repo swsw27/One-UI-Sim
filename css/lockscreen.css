@@ -1,6 +1,6 @@
 #lock-screen {
     background: linear-gradient(160deg, #415b85 0%, #283d60 45%, #111d35 100%);
-    touch-action: pan-y;
+    touch-action: none;
 }
 
 .lock-content {
@@ -44,16 +44,4 @@
     background: rgba(255,255,255,0.18);
     font-size: 23px;
     backdrop-filter: blur(10px);
-}
-
-#unlock-button {
-    position: absolute;
-    bottom: 135px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: max-content;
-    padding: 12px 23px;
-    border-radius: 30px;
-    background: rgba(255,255,255,0.15);
-    font-size: 13px;
 }

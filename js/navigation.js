@@ -1,17 +1,26 @@
+const device = document.getElementById("device");
 const lockScreen = document.getElementById("lock-screen");
 const homeScreen = document.getElementById("home-screen");
 const drawer = document.getElementById("app-drawer");
 const lockContent = lockScreen.querySelector(".lock-content");
 
-// 잠금 해제에 필요한 드래그 거리(px). 방향과 상관없이 시작점에서 떨어진 거리로 판단합니다.
+// 잠금 해제에 필요한 드래그 거리(px)
 const UNLOCK_DISTANCE = 100;
 
-/* ===== 화면 전환 ===== */
+// 이 값보다 아래로 내려가면 아래 방향 제스처(알림창 영역)로 보고 해제하지 않음
+const DOWN_TOLERANCE = 20;
+
+/* ===== 공통 상태 ===== */
+
+function isLocked() {
+    return lockScreen.classList.contains("active");
+}
 
 function unlockDevice() {
     resetLockContent();
     lockScreen.classList.remove("active");
     homeScreen.classList.add("active");
+    device.classList.remove("locked");
 }
 
 function openDrawer() {
@@ -22,7 +31,32 @@ function closeDrawer() {
     drawer.classList.remove("open");
 }
 
-/* ===== 잠금 화면: 모든 방향으로 쓸어서 해제 ===== */
+/* ===== 하단 내비게이션 버튼 ===== */
+
+function onRecentsButton() {
+    if (isLocked()) return;
+    // 최근 앱 화면은 아직 구현 전입니다.
+}
+
+function onHomeButton() {
+    if (isLocked()) return;
+    closeDrawer();
+}
+
+function onBackButton() {
+    if (isLocked()) return;
+    if (drawer.classList.contains("open")) {
+        closeDrawer();
+        return;
+    }
+    // 앱 실행 기능이 생기면 앱 안에서의 뒤로가기 처리를 여기에 추가합니다.
+}
+
+document.getElementById("nav-recents").addEventListener("click", onRecentsButton);
+document.getElementById("nav-home").addEventListener("click", onHomeButton);
+document.getElementById("nav-back").addEventListener("click", onBackButton);
+
+/* ===== 잠금 화면: 가로 또는 위 방향 드래그로 해제 ===== */
 
 let lockStart = null;
 
@@ -32,8 +66,19 @@ function resetLockContent() {
     lockContent.style.opacity = "";
 }
 
+function getLockDelta(e) {
+    return {
+        dx: e.clientX - lockStart.x,
+        dy: e.clientY - lockStart.y
+    };
+}
+
+function isDownGesture(dy) {
+    return dy > DOWN_TOLERANCE;
+}
+
 lockScreen.addEventListener("pointerdown", (e) => {
-    if (!lockScreen.classList.contains("active")) return;
+    if (!isLocked()) return;
     lockStart = { x: e.clientX, y: e.clientY };
     lockScreen.setPointerCapture(e.pointerId);
     lockContent.style.transition = "none";
@@ -42,25 +87,34 @@ lockScreen.addEventListener("pointerdown", (e) => {
 lockScreen.addEventListener("pointermove", (e) => {
     if (!lockStart) return;
 
-    const dx = e.clientX - lockStart.x;
-    const dy = e.clientY - lockStart.y;
-    const distance = Math.hypot(dx, dy);
+    const { dx, dy } = getLockDelta(e);
+
+    // 아래 방향 제스처는 콘텐츠를 움직이지 않음
+    if (isDownGesture(dy)) {
+        lockContent.style.transform = "";
+        lockContent.style.opacity = "";
+        return;
+    }
+
+    // 가로 또는 위 방향만 콘텐츠가 따라 움직임
+    const moveY = Math.min(0, dy);
+    const distance = Math.hypot(dx, moveY);
     const progress = Math.min(1, distance / UNLOCK_DISTANCE);
 
-    // 손가락 방향을 따라 콘텐츠가 함께 움직이고, 거리가 늘수록 살짝 흐려집니다.
-    lockContent.style.transform = `translate(${dx}px, ${dy}px)`;
+    lockContent.style.transform = `translate(${dx}px, ${moveY}px)`;
     lockContent.style.opacity = String(1 - progress * 0.6);
 });
 
 function endLockDrag(e) {
     if (!lockStart) return;
 
-    const dx = e.clientX - lockStart.x;
-    const dy = e.clientY - lockStart.y;
-    const distance = Math.hypot(dx, dy);
+    const { dx, dy } = getLockDelta(e);
     lockStart = null;
 
-    if (distance >= UNLOCK_DISTANCE) {
+    const moveY = Math.min(0, dy);
+    const distance = Math.hypot(dx, moveY);
+
+    if (!isDownGesture(dy) && distance >= UNLOCK_DISTANCE) {
         unlockDevice();
     } else {
         resetLockContent();

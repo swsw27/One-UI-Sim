@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
-    <main id="device">
+    <main id="device" class="locked">
         <div id="status-bar">
             <span id="status-time">--:--</span>
             <div class="status-icons"><span>●</span><span>Wi-Fi</span><span>▰</span></div>
@@ -27,7 +27,6 @@
                 <button class="shortcut" aria-label="전화">☎</button>
                 <button class="shortcut" aria-label="카메라">📷</button>
             </div>
-            <button id="unlock-button">위로 밀어 잠금 해제 ↑</button>
         </section>
 
         <section id="home-screen" class="screen">
@@ -78,7 +77,17 @@
             </div>
         </section>
 
-        <div id="navigation-bar"><div></div></div>
+        <nav id="navigation-bar">
+            <button class="nav-button" id="nav-recents" aria-label="최근 앱">
+                <svg viewBox="0 0 24 24"><path d="M7 6v12M12 6v12M17 6v12"/></svg>
+            </button>
+            <button class="nav-button" id="nav-home" aria-label="홈">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/></svg>
+            </button>
+            <button class="nav-button" id="nav-back" aria-label="뒤로">
+                <svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>
+            </button>
+        </nav>
     </main>
 
     <script src="js/clock.js"></script>
