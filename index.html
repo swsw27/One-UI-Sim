@@ -29,17 +29,34 @@
             </div>
         </section>
 
-        <section id="home-screen" class="screen">
-            <div class="home-header">
-                <div class="home-greeting">
-                    <span>One UI Sim</span>
-                    <h1>안녕하세요.</h1>
+                <section id="home-screen" class="screen">
+            <div class="home-notice">
+                <div class="notice-icon">🔔</div>
+                <div class="notice-text">
+                    <strong>오늘의 알림</strong>
+                    <span>알림 카드 영역</span>
                 </div>
             </div>
 
-            <div class="widget">
-                <div id="home-clock">--:--</div>
-                <div id="home-date"></div>
+            <div class="home-widgets">
+                <div class="widget clock-widget">
+                    <div id="home-clock">--:--</div>
+                    <div id="home-date"></div>
+                </div>
+                <div class="widget pill-widget">
+                    <span class="pill-label">메모</span>
+                </div>
+                <div class="widget pill-widget">
+                    <span class="pill-label">날씨</span>
+                    <strong>--°</strong>
+                </div>
+            </div>
+
+            <div class="health-row">
+                <div class="health-chip"><span class="chip-value">--</span><span>배터리</span></div>
+                <div class="health-chip"><span class="chip-value">--</span><span>걸음</span></div>
+                <div class="health-chip"><span class="chip-value">--</span><span>수면</span></div>
+                <div class="health-chip"><span class="chip-value">--</span><span>심박</span></div>
             </div>
 
             <div class="app-grid">
@@ -49,6 +66,12 @@
                 <button class="app-icon"><div class="icon clock-icon">◷</div><span>시계</span></button>
                 <button class="app-icon"><div class="icon internet-icon">◎</div><span>인터넷</span></button>
                 <button class="app-icon"><div class="icon games-icon">🎮</div><span>술래잡기</span></button>
+            </div>
+
+            <div class="page-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
             </div>
 
             <div class="dock">

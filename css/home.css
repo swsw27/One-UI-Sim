@@ -1,36 +1,108 @@
 #home-screen {
-    background: linear-gradient(160deg, #293c59, #18263d 65%, #101827);
-    padding: 50px 20px 30px;
+    background: linear-gradient(170deg, #b9a7e8 0%, #8f7fd6 45%, #6c6fc0 100%);
+    padding: 40px 18px 30px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.15);
 }
 
-.home-header { margin-top: 10px; }
-.home-greeting span { font-size: 13px; opacity: 0.7; }
-.home-greeting h1 { margin-top: 8px; font-size: 29px; font-weight: 600; }
+/* 상단 알림 카드 */
+.home-notice {
+    margin-top: 14px;
+    padding: 12px 16px;
+    border-radius: 22px;
+    background: rgba(255,255,255,0.28);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.notice-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.notice-text strong { display: block; font-size: 14px; font-weight: 600; }
+.notice-text span { font-size: 12px; opacity: 0.85; }
+
+/* 위젯 2열 배치: 왼쪽 큰 시계, 오른쪽 작은 위젯 2개 */
+.home-widgets {
+    margin-top: 14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+    height: 190px;
+}
 
 .widget {
-    margin-top: 35px;
-    padding: 20px;
+    padding: 16px;
     border-radius: 27px;
-    background: rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.3);
 }
 
-#home-clock { font-size: 43px; font-weight: 300; }
-#home-date { margin-top: 5px; font-size: 14px; opacity: 0.8; }
+.clock-widget {
+    grid-row: 1 / span 2;
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
-.app-grid {
-    margin-top: 35px;
+#home-clock { font-size: 46px; font-weight: 300; }
+#home-date { margin-top: 5px; font-size: 13px; opacity: 0.9; }
+
+.pill-widget {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+}
+
+.pill-label { font-size: 12px; opacity: 0.9; }
+.pill-widget strong { font-size: 20px; font-weight: 600; }
+
+/* 건강 칩 줄 */
+.health-row {
+    margin-top: 14px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    row-gap: 28px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.health-chip {
+    padding: 8px 4px;
+    border-radius: 22px;
+    background: rgba(255,255,255,0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    font-size: 11px;
+}
+
+.chip-value { font-size: 16px; font-weight: 600; }
+
+/* 앱 그리드: 4열 */
+.app-grid {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 14px;
 }
 
 .app-icon {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 7px;
+    gap: 6px;
     background: transparent;
-    font-size: 12px;
+    color: white;
+    font-size: 11px;
 }
 
 .icon {
@@ -41,7 +113,7 @@
     align-items: center;
     justify-content: center;
     font-size: 27px;
-    background: rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.3);
 }
 
 .settings-icon { background: #6d7887; }
@@ -51,14 +123,35 @@
 .internet-icon { background: #8ba8d5; color: #203c67; }
 .games-icon { background: #7768a9; }
 
+/* 페이지 점 */
+.page-dots {
+    position: absolute;
+    bottom: 150px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.45);
+}
+
+.dot.active { background: white; }
+
+/* 독 */
 .dock {
     position: absolute;
     bottom: 65px;
-    left: 20px;
-    right: 20px;
+    left: 18px;
+    right: 18px;
     height: 75px;
     border-radius: 27px;
-    background: rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.28);
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -71,18 +164,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.3);
     font-size: 23px;
 }
 
-#app-drawer-button {
-    position: absolute;
-    bottom: 145px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: transparent;
-    font-size: 23px;
-}
+/* 앱 서랍 버튼은 갤럭시 홈에 없으므로 숨김 (위로 쓸어올리기로 서랍 열기는 유지) */
+#app-drawer-button { display: none; }
 
 #app-drawer {
     position: absolute;
@@ -94,6 +181,7 @@
     transition: transform 0.3s ease;
     z-index: 150;
     overflow-y: auto;
+    text-shadow: none;
 }
 
 #app-drawer.open { transform: translateY(0); }
@@ -106,7 +194,7 @@
 }
 
 .drawer-header h2 { font-size: 28px; }
-.drawer-header button { background: transparent; font-size: 20px; }
+.drawer-header button { background: transparent; font-size: 20px; color: white; }
 
 #app-search {
     width: 100%;
