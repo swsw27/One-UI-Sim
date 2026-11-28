@@ -47,12 +47,16 @@
     color: white;
 }
 
-.settings-icon { background: #6d7887; }
-.gallery-icon { background: #e7b6a4; color: #543c35; }
+.phone-icon { background: #0fa549; }
+.settings-icon { background: #2b2231; }
+.gallery-icon { background: linear-gradient(to top right, #a819d2, #dc4c0a); }
 .calculator-icon { background: #83a5ad; color: #172f35; }
-.clock-icon { background: #647eae; }
-.internet-icon { background: #8ba8d5; color: #203c67; }
+.clock-icon { background: #adaab1; }
+.internet-icon { background: #4233d0; }
 .games-icon { background: #7768a9; }
+
+.icon svg { width: 30px; height: 30px; }
+.dock-icon svg { width: 26px; height: 26px; }
 
 /* 페이지 점 */
 .page-dots {
