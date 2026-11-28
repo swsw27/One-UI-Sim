@@ -147,6 +147,28 @@ document.addEventListener("touchend", (e) => {
     if (distance >= 70) openDrawer();
 }, { passive: true });
 
+/* ===== PC 테스트용: 마우스로 위로 드래그해 앱 서랍 열기 ===== */
+
+let mouseStartY = null;
+
+document.addEventListener("pointerdown", (e) => {
+    if (e.pointerType !== "mouse" || e.button !== 0) return;
+    if (!homeScreen.classList.contains("active")) return;
+    mouseStartY = e.clientY;
+});
+
+document.addEventListener("pointerup", (e) => {
+    if (e.pointerType !== "mouse" || mouseStartY === null) return;
+
+    const distance = mouseStartY - e.clientY;
+    mouseStartY = null;
+
+    if (!homeScreen.classList.contains("active")) return;
+    if (drawer.classList.contains("open")) return;
+
+    if (distance >= 70) openDrawer();
+});
+
 document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeDrawer();
 });

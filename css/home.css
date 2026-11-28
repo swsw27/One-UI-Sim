@@ -83,7 +83,7 @@
     height: 75px;
     border: none;
     border-radius: 27px;
-    background: #2a2550;
+    background: transparent;
     display: flex;
     justify-content: space-around;
     align-items: center;
