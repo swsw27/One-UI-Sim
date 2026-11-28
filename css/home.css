@@ -1,95 +1,26 @@
 #home-screen {
     background: linear-gradient(170deg, #b9a7e8 0%, #8f7fd6 45%, #6c6fc0 100%);
     padding: 40px 18px 30px;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.15);
 }
 
-/* 상단 알림 카드 */
-.home-notice {
-    margin-top: 14px;
-    padding: 12px 16px;
-    border-radius: 22px;
-    background: rgba(255,255,255,0.28);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.notice-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 12px;
-    background: rgba(255,255,255,0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-}
-
-.notice-text strong { display: block; font-size: 14px; font-weight: 600; }
-.notice-text span { font-size: 12px; opacity: 0.85; }
-
-/* 위젯 2열 배치: 왼쪽 큰 시계, 오른쪽 작은 위젯 2개 */
-.home-widgets {
-    margin-top: 14px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 10px;
-    height: 190px;
-}
-
+/* 시계 위젯: 단색 카드 */
 .widget {
-    padding: 16px;
+    padding: 18px 20px;
     border-radius: 27px;
-    background: rgba(255,255,255,0.3);
+    background: #f4f1ff;
+    color: #2a2550;
 }
 
 .clock-widget {
-    grid-row: 1 / span 2;
-    grid-column: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    margin-top: 24px;
 }
 
 #home-clock { font-size: 46px; font-weight: 300; }
-#home-date { margin-top: 5px; font-size: 13px; opacity: 0.9; }
-
-.pill-widget {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 2px;
-}
-
-.pill-label { font-size: 12px; opacity: 0.9; }
-.pill-widget strong { font-size: 20px; font-weight: 600; }
-
-/* 건강 칩 줄 */
-.health-row {
-    margin-top: 14px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-}
-
-.health-chip {
-    padding: 8px 4px;
-    border-radius: 22px;
-    background: rgba(255,255,255,0.3);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    font-size: 11px;
-}
-
-.chip-value { font-size: 16px; font-weight: 600; }
+#home-date { margin-top: 5px; font-size: 13px; opacity: 0.85; }
 
 /* 앱 그리드: 4열 */
 .app-grid {
-    margin-top: 20px;
+    margin-top: 28px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     row-gap: 14px;
@@ -113,7 +44,7 @@
     align-items: center;
     justify-content: center;
     font-size: 27px;
-    background: rgba(255,255,255,0.3);
+    color: white;
 }
 
 .settings-icon { background: #6d7887; }
@@ -143,15 +74,16 @@
 
 .dot.active { background: white; }
 
-/* 독 */
+/* 독: 테두리 없이 단색 */
 .dock {
     position: absolute;
     bottom: 65px;
     left: 18px;
     right: 18px;
     height: 75px;
+    border: none;
     border-radius: 27px;
-    background: rgba(255,255,255,0.28);
+    background: #2a2550;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -164,7 +96,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255,255,255,0.3);
+    background: #6c6fc0;
+    color: white;
     font-size: 23px;
 }
 
@@ -175,13 +108,11 @@
     position: absolute;
     inset: 0;
     padding: 55px 22px 35px;
-    background: rgba(25,30,42,0.97);
-    backdrop-filter: blur(15px);
+    background: #191e2a;
     transform: translateY(100%);
     transition: transform 0.3s ease;
     z-index: 150;
     overflow-y: auto;
-    text-shadow: none;
 }
 
 #app-drawer.open { transform: translateY(0); }
@@ -202,7 +133,7 @@
     border: none;
     outline: none;
     border-radius: 25px;
-    background: rgba(255,255,255,0.13);
+    background: #2a3142;
     color: white;
     padding: 0 18px;
     font-size: 14px;

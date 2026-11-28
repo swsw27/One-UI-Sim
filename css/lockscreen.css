@@ -41,7 +41,7 @@
     width: 55px;
     height: 55px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.18);
+    background: #3b4a6b;
+    color: white;
     font-size: 23px;
-    backdrop-filter: blur(10px);
 }
